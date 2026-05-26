@@ -1,7 +1,7 @@
 <?php
 session_start();
 $host = "localhost";
-$user = "root";
+$user = "admin";
 $pass = "";
 $db   = "db_tkj";
 
