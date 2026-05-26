@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "login";
+$db   = "db_tkj";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
