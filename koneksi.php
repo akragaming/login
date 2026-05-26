@@ -1,8 +1,8 @@
 <?php
-session_start();
+
 $host = "localhost";
 $user = "admin";
-$pass = "";
+$pass = "123456789";
 $db   = "db_tkj";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
