@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$user = "admin";
-$pass = "123456789";
-$db   = "db_tkj";
+$user = "tkj2be_admin";
+$pass = "Admin123";
+$db   = "tkj2be_db_tkj";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
