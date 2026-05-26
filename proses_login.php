@@ -6,7 +6,7 @@ $username = $_POST['username'];
 $password = md5($_POST['password']);
 
 $query = mysqli_query($koneksi,
-"SELECT * FROM users 
+"SELECT * FROM identitas 
 WHERE username='$username' 
 AND password='$password'");
 
