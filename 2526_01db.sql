@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Bulan Mei 2026 pada 06.19
+-- Waktu pembuatan: 26 Bulan Mei 2026 pada 08.07
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -37,6 +37,14 @@ CREATE TABLE `identitas` (
   `umur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `identitas`
+--
+
+INSERT INTO `identitas` (`id`, `user_id`, `nama`, `alamat`, `email`, `jabatan`, `umur`) VALUES
+(1, 1, 'akra', 'sindangreret', 'akragaming23@gmail.com', 'admin', 19),
+(2, 1, 'akra', 'sindangreret', 'akragaming23@gmail.com', 'admin', 19);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +63,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', '123', 'admin');
+(1, 'admin', '123', 'admin'),
+(2, 'acil', '7ef326c32e928179c919af202b697a44', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -82,13 +91,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `identitas`
 --
 ALTER TABLE `identitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
