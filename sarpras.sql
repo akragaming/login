@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2026 at 04:37 AM
+-- Generation Time: May 26, 2026 at 04:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,7 +64,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
-(1, 'akra', '7ef326c32e928179c919af202b697a44', 'admin'),
+(1, 'akra', '202cb962ac59075b964b07152d234b70', 'admin'),
 (2, 'dzanagi_cr', '7ef326c32e928179c919af202b697a44', 'user'),
 (3, 'akra', '7ef326c32e928179c919af202b697a44', 'user');
 
