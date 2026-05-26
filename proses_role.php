@@ -1,19 +1,18 @@
 <?php
-session_start();
 include 'koneksi.php';
 
 if($_SESSION['role'] != 'admin'){
     die("Akses ditolak");
 }
 
-$id = $_POST['id'];
-$role = $_POST['role'];
+$id = mysqli_real_escape_string($koneksi, $_POST['id']);
+$role = mysqli_real_escape_string($koneksi, $_POST['role']);
 
-mysqli_query($koneksi,
-"UPDATE user SET
-role='$role'
-WHERE id='$id'
-");
+$update = mysqli_query($koneksi, "UPDATE user SET role='$role' WHERE id='$id'");
 
-header("location:user.php");
+if($update){
+    header("location:data.php");
+} else {
+    echo "Gagal mengubah role: " . mysqli_error($koneksi);
+}
 ?>

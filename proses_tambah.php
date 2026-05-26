@@ -1,87 +1,29 @@
 <?php
-session_start();
 include 'koneksi.php';
 
+if(!isset($_SESSION['id'])){
+    header("location:login.php");
+    exit;
+}
+
 $user_id = $_SESSION['id'];
+$nama    = mysqli_real_escape_string($koneksi, $_POST['nama']);
+$alamat  = mysqli_real_escape_string($koneksi, $_POST['alamat']);
+$email   = mysqli_real_escape_string($koneksi, $_POST['email']);
+$jabatan = mysqli_real_escape_string($koneksi, $_POST['jabatan']);
+$umur    = mysqli_real_escape_string($koneksi, $_POST['umur']);
 
-$nama = $_POST['nama'];
-$alamat = $_POST['alamat'];
-$email = $_POST['email'];
-$jabatan = $_POST['jabatan'];
-$umur = $_POST['umur'];
-
-$cek = mysqli_query($koneksi,
-"SELECT * FROM identitas
-WHERE user_id='$user_id'");
-
-if(mysqli_num_rows($cek) > 0){
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Gagal</title>
-
-<style>
-body{
-    font-family:Poppins,sans-serif;
-    background:linear-gradient(135deg,#ef4444,#dc2626);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+// User biasa hanya boleh punya 1 data identitas
+$cek = mysqli_query($koneksi, "SELECT * FROM identitas WHERE user_id='$user_id'");
+if($_SESSION['role'] != 'admin' && mysqli_num_rows($cek) > 0){
+    die("<script>alert('Anda sudah pernah mengisi data identitas!'); window.location='data.php';</script>");
 }
 
-.box{
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-}
+$insert = mysqli_query($koneksi, "INSERT INTO identitas (user_id, nama, alamat, email, jabatan, umur) VALUES ('$user_id', '$nama', '$alamat', '$email', '$jabatan', '$umur')");
 
-a{
-    padding:10px 20px;
-    background:#ef4444;
-    color:white;
-    text-decoration:none;
-    border-radius:10px;
-}
-</style>
-</head>
-<body>
-
-<div class="box">
-
-<h2>Data Sudah Ada</h2>
-
-<p>
-User hanya bisa menambahkan data 1 kali
-</p>
-
-<a href="data.php">
-Kembali
-</a>
-
-</div>
-
-</body>
-</html>
-
-<?php
-
-}else{
-
-// Kolom dideklarasikan secara spesifik tanpa mengikutsertakan 'id'
-mysqli_query($koneksi, "INSERT INTO identitas (nama, alamat, email, jabatan, umur, user_id) VALUES(
-'$nama',
-'$alamat',
-'$email',
-'$jabatan',
-'$umur',
-'$user_id'
-)");
-
-header("location:data.php");
-
+if($insert){
+    header("location:data.php");
+} else {
+    echo "Gagal menyimpan data: " . mysqli_error($koneksi);
 }
 ?>
