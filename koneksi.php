@@ -4,9 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $host = "localhost";
-$user = "2526_01";
+$user = "2526_21";
 $pass = "12345678";
-$db   = "2526_01db";
+$db   = "2526_21db";
 
 $koneksi = mysqli_connect($host, $user, $pass, $db);
 
