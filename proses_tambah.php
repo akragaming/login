@@ -71,9 +71,8 @@ Kembali
 
 }else{
 
-mysqli_query($koneksi,
-"INSERT INTO identitas VALUES(
-'',
+// Kolom dideklarasikan secara spesifik tanpa mengikutsertakan 'id'
+mysqli_query($koneksi, "INSERT INTO identitas (nama, alamat, email, jabatan, umur, user_id) VALUES(
 '$nama',
 '$alamat',
 '$email',

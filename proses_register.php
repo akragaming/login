@@ -4,9 +4,8 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-mysqli_query($koneksi,
-"INSERT INTO user VALUES(
-'',
+// Kolom dideklarasikan secara spesifik tanpa mengikutsertakan 'id'
+mysqli_query($koneksi, "INSERT INTO user (username, password, role) VALUES(
 '$username',
 '$password',
 'user'
